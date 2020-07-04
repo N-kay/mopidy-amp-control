@@ -12,7 +12,6 @@ class RepeatingTimer():
 
     def callback(self):
         self.function(*self.args, **self.kwargs)
-        self.start()
 
     def cancel(self):
         self.timer.cancel()
