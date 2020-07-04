@@ -1,8 +1,7 @@
 import subprocess
 import logging
 import pykka
-from mopidy.core import CoreListener
-
+from mopidy.core import CoreListener, PlaybackState
 from .repeating_timer import RepeatingTimer
 
 logger = logging.getLogger(__name__)
@@ -42,7 +41,7 @@ class AmpControlFrontend(pykka.ThreadingActor, CoreListener):
 
     def on_start(self):
         playback_state = self.core.playback.get_state()
-        if playback_state == self.core.PlaybackState.PLAYING:
+        if playback_state == PlaybackState.PLAYING:
             self.power_amp()
 
     def on_stop(self):
