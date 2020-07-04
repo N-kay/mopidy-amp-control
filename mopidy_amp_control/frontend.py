@@ -42,7 +42,7 @@ class AmpControlFrontend(pykka.ThreadingActor, CoreListener):
 
     def on_start(self):
         playback_state = self.core.playback.get_state()
-        if playback_state == self.core.PlayBackState.PLAYING:
+        if playback_state == self.core.PlaybackState.PLAYING:
             self.power_amp()
 
     def on_stop(self):
